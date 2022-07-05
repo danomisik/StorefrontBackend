@@ -144,8 +144,6 @@ Product was deleted
  
  URL: `'/users' [POST]`
  
- Header: Authorization - Bearer ${AuthorizationToken}
- 
  Body:
 
 ```
@@ -160,13 +158,9 @@ Product was deleted
  - Response body
 
 ```
-    {
-        "id": 1,
-        "username": "username",
-        "firstname": "sd",
-        "lastname": "zxcz",
-        "password": "$2b$10$mb5/9pU7FqoS8bvZYoJD2eLe4anVrI9VY96BssF2j.pAjE.SrwS5e"
-    }
+{
+    "AuthorizationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo3LCJ1c2VybmFtZSI6InVzZXJuYW1lIn0sImlhdCI6MTY1NzAwNTE0NSwiZXhwIjoxNjU3MDkxNTQ1fQ.NX78kF8_CEjNlM8RGhRacKIAewS19wK_TANNLnt-mvE"
+}
 ```
 
 #### Authenticate [ADDITIONAL] - authneticate user

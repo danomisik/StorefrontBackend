@@ -18,6 +18,16 @@ docker run --name postgresql-container -p 5432:5432 -e POSTGRES_USER=daniel -e P
 
 3. Database is running on localhost and port `5432`.
 
+## How to use psql to access database
+
+Run following commands in command line:
+
+```
+psql -h 127.0.0.1 -p 5432 -U daniel postgres
+type password: password123
+\c store
+```
+
 ## How to run tests
 
 1. Make sure that database is running
@@ -49,17 +59,10 @@ npm run watch
 
 3. App is running on localhost and port `3000`.
 
-4. Login to database and insert first user(Example: username=username, password=bcrypt(password)):
+4. Use Postman/Frontend:
 
-```
-psql -h 127.0.0.1 -p 5432 -U daniel postgres
-type password: password123
-\c store
-INSERT INTO users (username, firstname, lastname, password) VALUES('username', 'Johnny', 'English', '$2b$10$mb5/9pU7FqoS8bvZYoJD2eLe4anVrI9VY96BssF2j.pAjE.SrwS5e') RETURNING *;
-```
-
-5. Use Postman/Frontend:
-- authenticate to `/users/authenticate [POST]` endpoint with json body
+- create user through `/users [POST]` endpoint or
+- authenticate to existing user by `/users/authenticate [POST]` endpoint with json body
 ```
 {
     "username": "username",
@@ -67,7 +70,7 @@ INSERT INTO users (username, firstname, lastname, password) VALUES('username', '
 }
 ```
 - Response will contain AuthorizationToken
-- use AuthorizationToken for requests that have [token required]
+- Use AuthorizationToken for requests that have [token required]
 
 ## Additional details
 
