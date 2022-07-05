@@ -1,7 +1,6 @@
 import supertest from 'supertest';
 import app from '../../server';
 import { ProductStore } from '../../models/product';
-import { OrderStore } from '../../models/order';
 import { UserStore } from '../../models/user';
 import client from '../../database';
 

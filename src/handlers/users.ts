@@ -54,7 +54,12 @@ const create = async (
     }
 
     const newUser = await store.create(user);
-    res.json(newUser);
+    var token = jwt.sign(
+      { user: { id: newUser.id, username: newUser.username } },
+      process.env.TOKEN_SECRET as string,
+      { expiresIn: '24h' }
+    );
+    res.json({ AuthorizationToken: token });
   } catch (err) {
     // @ts-ignore
     // verify if there is 'duplicate key violates unique constraint' for username <https://bobcares.com/blog/postgresql-error-code-23505/>
@@ -135,7 +140,6 @@ const userRoutes = (app: express.Application) => {
     body('firstname').exists().notEmpty().isString(),
     body('lastname').exists().notEmpty().isString(),
     body('password').exists().notEmpty().isString(),
-    verifyAuthToken,
     create
   );
   app.delete(

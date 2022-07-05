@@ -1,38 +1,15 @@
 import supertest from 'supertest';
 import app from '../../server';
-import { UserStore } from '../../models/user';
 
-const store = new UserStore();
-
-let adminUserId: string;
 let userId: string;
 let authorizationToken: string;
 
 describe('Endpoint /users', function () {
-  // Login with new user and save authorizationToken to variable
-  beforeAll(async function () {
-    const result = await store.create({
-      username: 'testuser',
-      firstname: 'Johnny',
-      lastname: 'English',
-      password: 'testuser'
-    });
-    adminUserId = String(result.id);
-    await supertest(app)
-      .post('/users/authenticate')
-      .set('Accept', 'application/json')
-      .send({ username: 'testuser', password: 'testuser' })
-      .then(function (res) {
-        //console.log(`Authorization Token is ${res.body.AuthorizationToken}`)
-        authorizationToken = res.body.AuthorizationToken;
-      });
-  });
 
   it('should create user and respond with Authorization Token', function (done) {
     supertest(app)
       .post('/users')
       .set('Accept', 'application/json')
-      .set('Authorization', `Bearer ${authorizationToken}`)
       .send({
         username: 'johnny',
         firstname: 'Johnny',
@@ -45,7 +22,7 @@ describe('Endpoint /users', function () {
         if (err) {
           done.fail(err);
         } else {
-          userId = res.body.id;
+          authorizationToken=res.body.AuthorizationToken
           done();
         }
       });
@@ -77,6 +54,7 @@ describe('Endpoint /users', function () {
         if (err) {
           done.fail(err);
         } else {
+          userId=res.body[0].id;
           done();
         }
       });
@@ -113,8 +91,4 @@ describe('Endpoint /users', function () {
       });
   });
 
-  // Remove user
-  afterAll(async function () {
-    const result = await store.delete(adminUserId);
-  });
 });
