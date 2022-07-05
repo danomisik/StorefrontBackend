@@ -6,31 +6,79 @@ This project contain example backend for store with users, orders and products t
 
 This repo contains a basic Node and Express app to get you started in constructing an API. To get started, clone this repo and run `npm install` in your terminal at the project root.
 
-## How to start database
+## Deploy Postgres databases
 
 1. Install Docker
 
-2. Run following commands in command line:
+2.  Start postgres container with `store` database for developemnt:
 
 ```
 docker run --name postgresql-container -p 5432:5432 -e POSTGRES_USER=daniel -e POSTGRES_PASSWORD=password123 -e POSTGRES_DB=store -d postgres
 ```
 
-3. Database is running on localhost and port `5432`.
+DEV Database details:
 
-## How to use psql to access database
+- Database name: store ( same as value of [POSTGRES_DB environment variable](#Additional details))
+- Port: 5432 ( same as value of [POSTGRES_PORT environment variable](#Additional details) )
+- username of database user: daniel
+- password of database user: password123
 
-Run following commands in command line:
+3.  Start postgres container with `store_test` database for testing:
+
+```
+docker run --name postgresql-test-container -p 5433:5432 -e POSTGRES_USER=daniel -e POSTGRES_PASSWORD=password123 -e POSTGRES_DB=store_test -d postgres
+```
+
+TEST Database details:
+
+- Database name: store_test ( same as value of [POSTGRES_TEST_DB environment variable](#Additional details))
+- Port: 5433 ( same as value of [POSTGRES_TEST_PORT environment variable](#Additional details) )
+- username of database user: daniel
+- password of database user: password123
+
+
+## How to use psql for access to databases
+
+Access DEV database:
+
+1. Run following command in command line to access DEV postgres deployment:
 
 ```
 psql -h 127.0.0.1 -p 5432 -U daniel postgres
-type password: password123
+```
+
+2. Type password `password123` to login as user daniel
+
+3. Run following command to access `store` database
+
+```
 \c store
 ```
 
-## How to run tests
+4. Now you can write INSERTS, SELECTS, UPDATES in `store` database
 
-1. Make sure that database is running
+
+Access TEST database:
+
+1. Run following command in command line to access TEST postgres deployment:
+
+```
+psql -h 127.0.0.1 -p 5433 -U daniel postgres
+```
+
+2. Type password `password123` to login as user daniel
+
+3. Run following command to access `store_test` database
+
+```
+\c store_test
+```
+
+4. Now you can write INSERTS, SELECTS, UPDATES in `store_test` database
+
+## How to start tests
+
+1. [Deploy TEST database](#Deploy Postgres databases)
 2. Run following commands in root directory of project:
 
 ```
@@ -46,23 +94,28 @@ npm run lint
 npm run prettier
 ```
 
-## How to deploy and use dev environment
+## How to deploy DEV application
 
-1. Make sure that database is running
+1. [Deploy DEV database](#Deploy Postgres databases)
 
-2. Run following commands in root directory of project:
+2. Migrate database tables for DEV by following command in root directory of project :
 
 ```
 db-migrate up
+```
+
+3. Start app by following command in root directory of project:
+
+```
 npm run watch
 ```
 
-3. App is running on localhost and port `3000`.
+4. App is running on localhost and port `3000`.
 
-4. Use Postman/Frontend:
+5. Use Postman or curl or frontend to work with Backend:
 
-- create user through `/users [POST]` endpoint or
-- authenticate to existing user by `/users/authenticate [POST]` endpoint with json body
+- create user through `/users [POST]` API endpoint or
+- authenticate to existing user by `/users/authenticate [POST]` API endpoint with json body
 ```
 {
     "username": "username",
@@ -70,7 +123,7 @@ npm run watch
 }
 ```
 - Response will contain AuthorizationToken
-- Use AuthorizationToken for requests that have [token required]
+- Use AuthorizationToken for API requests that have [token required]
 
 ## Additional details
 
@@ -79,9 +132,11 @@ npm run watch
 ```
 POSTGRES_HOST=127.0.0.1
 POSTGRES_DB=store
-POSTGRES_TEST_DB=store
+POSTGRES_TEST_DB=store_test
 POSTGRES_USER=daniel
 POSTGRES_PASSWORD=password123
+POSTGRES_PORT=5432
+POSTGRES_TEST_PORT=5433
 ENV=dev
 BCRYPT_PASSWORD=bookstore-password123
 SALT_ROUNDS=10

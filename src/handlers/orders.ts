@@ -47,7 +47,10 @@ const addProduct = async (req: Request, res: Response): Promise<void> => {
 };
 
 const orderRoutes = (app: express.Application) => {
-  app.get('/orders/:user_id', param('user_id').exists().isInt(), show);
+  app.get('/orders/:user_id', 
+  param('user_id').exists().isInt(), 
+  verifyAuthToken,
+  show);
   app.post(
     '/orders/products',
     body('quantity').exists().isInt(),
