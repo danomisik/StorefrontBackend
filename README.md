@@ -14,7 +14,6 @@ This repo contains a basic Node and Express app to get you started in constructi
 
 ```
 docker run --name postgresql-container -p 5432:5432 -e POSTGRES_USER=daniel -e POSTGRES_PASSWORD=password123 -e POSTGRES_DB=store -d postgres
-psql -h localhost -p 5432 -U postgres -W
 ```
 
 3. Database is running on localhost and port `5432`.
@@ -30,7 +29,7 @@ npm run test
 
 ## How to format code
 
-1. Run following commands in command line:
+1. Run following commands in root directory of project:
 
 ```
 npm run lint
@@ -60,7 +59,7 @@ INSERT INTO users (username, firstname, lastname, password) VALUES('username', '
 ```
 
 5. Use Postman/Frontend:
-- authneticate to /users/authenticate [POST] endpoint with json body
+- authenticate to `/users/authenticate [POST]` endpoint with json body
 ```
 {
     "username": "username",
@@ -68,7 +67,7 @@ INSERT INTO users (username, firstname, lastname, password) VALUES('username', '
 }
 ```
 - Response will contain AuthorizationToken
-- use AuthorizationToken for consecutive requests that have [token required]
+- use AuthorizationToken for requests that have [token required]
 
 ## Additional details
 
