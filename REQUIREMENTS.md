@@ -13,7 +13,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 
  - Response body
 
-'''
+```
 [
     {
         "id": 1,
@@ -21,7 +21,7 @@ These are the notes from a meeting with the frontend developer that describe wha
         "price": 12
     }
 ]
-'''
+```
 
 #### Show - get certain product
 
@@ -33,13 +33,13 @@ These are the notes from a meeting with the frontend developer that describe wha
 
  - Response body
 
-'''
+```
 {
     "id": ${id},
     "name": "Product1",
     "price": 12
 }
-'''
+```
 
 
 #### Create [token required] - create new product
@@ -47,25 +47,27 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Request
  
  URL: `'/products' [POST]`
+ 
  Header: Authorization - Bearer ${AuthorizationToken}
+ 
  Body:
 
- '''
+ ```
  {
     "name": "Product1",
     "price": "12.1"
  }
- '''
+ ```
 
  - Response body
 
-'''
+```
     {
         "id": 1,
         "name": "Product1",
         "price": 12.1
     }
-'''
+```
 
 #### Delete [ADDITIONAL] - delete product
 
@@ -75,20 +77,20 @@ These are the notes from a meeting with the frontend developer that describe wha
 
  body:
 
- '''
+ ```
  {
     "id": "${id}"
  }
- '''
+ ```
 
 id: id of product that should be deleted
 
 
  - Response body
 
-'''
+```
 Product was deleted
-'''
+```
 
 ### Users
 
@@ -97,11 +99,12 @@ Product was deleted
 - Request
  
  URL: `'/users' [GET]`
+ 
  Header: Authorization - Bearer ${AuthorizationToken}
 
  - Response body
 
-'''
+```
 [
     {
         "id": 7,
@@ -111,19 +114,21 @@ Product was deleted
         "password": "$2b$10$mb5/9pU7FqoS8bvZYoJD2eLe4anVrI9VY96BssF2j.pAjE.SrwS5e"
     }
 ]
-'''
+```
 
 #### Show [token required] - show specific user
 
 - Request
  
  URL: `'/users/:id' [GET]`
+ 
  Header: Authorization - Bearer ${AuthorizationToken}
+ 
  id: id of user
 
  - Response body
 
-'''
+```
     {
         "id": ${id},
         "username": "username",
@@ -131,28 +136,30 @@ Product was deleted
         "lastname": "English",
         "password": "$2b$10$mb5/9pU7FqoS8bvZYoJD2eLe4anVrI9VY96BssF2j.pAjE.SrwS5e"
     }
-'''
+```
 
 #### Create [token required] - create user
 
 - Request
  
  URL: `'/users' [POST]`
+ 
  Header: Authorization - Bearer ${AuthorizationToken}
+ 
  Body:
 
-'''
+```
 {
     "username": "username",
     "firstname": "sd",
     "lastname": "zxcz",
     "password": "password"
 }
-'''
+```
 
  - Response body
 
-'''
+```
     {
         "id": 1,
         "username": "username",
@@ -160,7 +167,7 @@ Product was deleted
         "lastname": "zxcz",
         "password": "$2b$10$mb5/9pU7FqoS8bvZYoJD2eLe4anVrI9VY96BssF2j.pAjE.SrwS5e"
     }
-'''
+```
 
 #### Authenticate [ADDITIONAL] - authneticate user
 
@@ -170,20 +177,20 @@ Product was deleted
 
  body:
 
- '''
+ ```
  {
     "username": "username",
     "password": "password"
  }
- '''
+ ```
 
  - Response body
 
-'''
+```
 {
     "AuthorizationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo3LCJ1c2VybmFtZSI6InVzZXJuYW1lIn0sImlhdCI6MTY1NzAwNTE0NSwiZXhwIjoxNjU3MDkxNTQ1fQ.NX78kF8_CEjNlM8RGhRacKIAewS19wK_TANNLnt-mvE"
 }
-'''
+```
 
 Note: this token can be used for [token required] requests, need to be revoke after 24 hours.
 
@@ -196,20 +203,19 @@ Note: this token can be used for [token required] requests, need to be revoke af
 
  body:
 
- '''
+ ```
  {
     "id": "${id}"
  }
- '''
+ ```
 
 id: id of user that should be deleted
 
-
  - Response body
 
-'''
+```
 User was deleted
-'''
+```
 
 ### Orders
 #### Current Order by user (args: user id)[token required]
@@ -217,12 +223,14 @@ User was deleted
 - Request
  
  URL: `'/orders/:user_id' [GET]`
+
  Header: Authorization - Bearer ${AuthorizationToken}
+
  user_id: id of user
 
  - Response body
 
-'''
+```
 {
     "id": 1,
     "status": "active",
@@ -234,34 +242,36 @@ User was deleted
         }
     ]
 }
-'''
+```
 
 #### Add product to order [ADDITIONAL] [token required]
 
 - Request
  
  URL: `'/orders/products' [POST]`
+
  Header: Authorization - Bearer ${AuthorizationToken}
+
  Body:
 
-'''
+```
 {
     "quantity": "11",
     "order_id": "2",
     "product_id": "6"
 }
-'''
+```
 
  - Response body
 
-'''
+```
 {
     "id": 3,
     "quantity": 11,
     "order_id": "2",
     "product_id": "6"
 }
-'''
+```
 
 ## Data Shapes
 
@@ -290,7 +300,7 @@ Shapes that should be send between Frontend and Backend defined by Udacity Proje
 
 ### Users
 
-'''
+```
 TABLE users (
     id SERIAL PRIMARY KEY NOT NULL,
     username VARCHAR(100) UNIQUE NOT NULL,
@@ -298,35 +308,35 @@ TABLE users (
     lastName VARCHAR NOT NULL,
     password VARCHAR NOT NULL
 )
-'''
+```
 
 ### Products
 
-'''
+```
 TABLE products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(64) NOT NULL,
     price FLOAT NOT NULL
 )
-'''
+```
 
 ### Orders
 
-'''
+```
 TABLE orders (
     id SERIAL PRIMARY KEY,
     status VARCHAR(15),
     user_id bigint REFERENCES users(id)
 )
-'''
+```
 
 ### OrderProducts
 
-'''
+```
 TABLE order_products (
     id SERIAL PRIMARY KEY,
     quantity integer,
     order_id bigint REFERENCES orders(id),
     product_id bigint REFERENCES products(id)
 )
-'''
+```

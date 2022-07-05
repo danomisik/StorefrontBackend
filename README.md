@@ -74,7 +74,7 @@ INSERT INTO users (username, firstname, lastname, password) VALUES('username', '
 
 .env file(only for review):
 
-'''
+```
 POSTGRES_HOST=127.0.0.1
 POSTGRES_DB=store
 POSTGRES_USER=daniel
@@ -83,6 +83,6 @@ ENV=dev
 BCRYPT_PASSWORD=bookstore-password123
 SALT_ROUNDS=10
 TOKEN_SECRET=f1c640c7bd072fba35d83b885559e01b1d46f31e668c9171f3d0ae6a86ea8293
-'''
+```
 
 Details about Data Shapes, Tables in database and API Endpoints can be found in `REQUIREMENTS.md`.
