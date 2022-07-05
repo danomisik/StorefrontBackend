@@ -4,7 +4,7 @@ This project contain example backend for store with users, orders and products t
 
 ## Getting Started
 
-This repo contains a basic Node and Express app to get you started in constructing an API. To get started, clone this repo and run `npm install` in your terminal at the project root.
+To get started, clone this repo and run `npm install` in your terminal at the project root.
 
 ## Deploy Postgres databases
 
@@ -41,7 +41,7 @@ TEST Database details:
 
 Access DEV database:
 
-1. Run following command in command line to access DEV postgres deployment:
+1. Run following command in terminal to access DEV postgres deployment:
 
 ```
 psql -h 127.0.0.1 -p 5432 -U daniel postgres
@@ -49,18 +49,18 @@ psql -h 127.0.0.1 -p 5432 -U daniel postgres
 
 2. Type password `password123` to login as user daniel
 
-3. Run following command to access `store` database
+3. Then type following command to access `store` database
 
 ```
 \c store
 ```
 
-4. Now you can write INSERTS, SELECTS, UPDATES in `store` database
+4. Now you can write INSERTS, SELECTS, UPDATES into `store` database
 
 
 Access TEST database:
 
-1. Run following command in command line to access TEST postgres deployment:
+1. Run following command in terminal to access TEST postgres deployment:
 
 ```
 psql -h 127.0.0.1 -p 5433 -U daniel postgres
@@ -68,18 +68,18 @@ psql -h 127.0.0.1 -p 5433 -U daniel postgres
 
 2. Type password `password123` to login as user daniel
 
-3. Run following command to access `store_test` database
+3. Then type following command to access `store_test` database
 
 ```
 \c store_test
 ```
 
-4. Now you can write INSERTS, SELECTS, UPDATES in `store_test` database
+4. Now you can write INSERTS, SELECTS, UPDATES into `store_test` database
 
 ## How to start tests
 
-1. [Deploy TEST database](#Deploy Postgres databases)
-2. Run following commands in root directory of project:
+1. [Deploy TEST database](#deploy-postgres-databases)
+2. Run following commands in terminal in root directory of project:
 
 ```
 npm run test
@@ -87,7 +87,7 @@ npm run test
 
 ## How to format code
 
-1. Run following commands in root directory of project:
+1. Run following commands in terminal in root directory of project:
 
 ```
 npm run lint
@@ -96,15 +96,15 @@ npm run prettier
 
 ## How to deploy DEV application
 
-1. [Deploy DEV database](#Deploy Postgres databases)
+1. [Deploy DEV database](#deploy-postgres-databases)
 
-2. Migrate database tables for DEV by following command in root directory of project :
+2. Migrate database tables for DEV by following command in terminal in root directory of project:
 
 ```
 db-migrate up
 ```
 
-3. Start app by following command in root directory of project:
+3. Start app by following command in terminal in root directory of project:
 
 ```
 npm run watch
@@ -112,7 +112,7 @@ npm run watch
 
 4. App is running on localhost and port `3000`.
 
-5. Use Postman or curl or frontend to work with Backend:
+5. Use Postman/curl/frontend to call storefront backend:
 
 - create user through `/users [POST]` API endpoint or
 - authenticate to existing user by `/users/authenticate [POST]` API endpoint with json body
