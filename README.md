@@ -79,6 +79,7 @@ npm run watch
 ```
 POSTGRES_HOST=127.0.0.1
 POSTGRES_DB=store
+POSTGRES_TEST_DB=store
 POSTGRES_USER=daniel
 POSTGRES_PASSWORD=password123
 ENV=dev
