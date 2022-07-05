@@ -18,8 +18,8 @@ docker run --name postgresql-container -p 5432:5432 -e POSTGRES_USER=daniel -e P
 
 DEV Database details:
 
-- Database name: store ( same as value of [POSTGRES_DB environment variable](#Additional details))
-- Port: 5432 ( same as value of [POSTGRES_PORT environment variable](#Additional details) )
+- Database name: store ( same as value of [POSTGRES_DB environment variable](#additional-details))
+- Port: 5432 ( same as value of [POSTGRES_PORT environment variable](#additional-details) )
 - username of database user: daniel
 - password of database user: password123
 
@@ -31,8 +31,8 @@ docker run --name postgresql-test-container -p 5433:5432 -e POSTGRES_USER=daniel
 
 TEST Database details:
 
-- Database name: store_test ( same as value of [POSTGRES_TEST_DB environment variable](#Additional details))
-- Port: 5433 ( same as value of [POSTGRES_TEST_PORT environment variable](#Additional details) )
+- Database name: store_test ( same as value of [POSTGRES_TEST_DB environment variable](#additional-details))
+- Port: 5433 ( same as value of [POSTGRES_TEST_PORT environment variable](#additional-details) )
 - username of database user: daniel
 - password of database user: password123
 
