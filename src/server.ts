@@ -26,7 +26,7 @@ const errorHandler: ErrorRequestHandler = (
 
 //CORS enabled
 const corsOptions = {
-  origin: 'http://localhost',
+  origin: 'http://localhost:4200',
   optionSuccessStatus: 200
 };
 

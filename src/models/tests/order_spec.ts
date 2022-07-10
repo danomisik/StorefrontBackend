@@ -23,7 +23,9 @@ describe('Order Model', () => {
     userId = String(result.id);
     const result1 = await productStore.create({
       name: 'Jo Nesbo: Macbeth',
-      price: 15
+      price: 15,
+      url: 'http:test.com/img.png',
+      description: 'Great book'
     });
     productId = String(result1.id);
   });

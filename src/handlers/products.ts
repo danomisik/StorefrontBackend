@@ -78,6 +78,8 @@ const productRoutes = (app: express.Application) => {
     '/products',
     body('name').exists().isString(),
     body('price').exists().isFloat(),
+    body('url').exists().isString(),
+    body('description').exists().isString(),
     verifyAuthToken,
     create
   );

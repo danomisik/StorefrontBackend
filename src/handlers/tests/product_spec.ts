@@ -35,7 +35,9 @@ describe('Endpoint /products', function () {
       .set('Authorization', `Bearer ${authorizationToken}`)
       .send({
         name: 'Pecat mysle',
-        price: '12.1'
+        price: '12.1',
+        url: 'http:test.com/img.png',
+        description: 'Great book'
       })
       .expect('Content-Type', /json/)
       .expect(200)
